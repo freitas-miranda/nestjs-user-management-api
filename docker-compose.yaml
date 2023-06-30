@@ -7,6 +7,7 @@ services:
       - 3000:3000
     volumes:
       - .:/home/node/app
+      - ~/.ssh:/home/node/.ssh
 
   mariadb:
     image: mariadb:latest
