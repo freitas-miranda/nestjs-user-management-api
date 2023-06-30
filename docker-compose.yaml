@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/home/node/app
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: sql@dev
+      TZ: America/Porto_Velho
