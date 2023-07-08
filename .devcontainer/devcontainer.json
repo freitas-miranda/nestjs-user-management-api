@@ -29,6 +29,7 @@
 		"vscode": {
 			"extensions": [
 				"prisma.prisma",
+        "prisma.prisma-insider",
 				"humao.rest-client",
 				"esbenp.prettier-vscode",
 				"dbaeumer.vscode-eslint"

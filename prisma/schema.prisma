@@ -11,9 +11,9 @@ datasource db {
 }
 
 model Usuario {
-  id         Int      @id @default(autoincrement())
+  id         Int    @id @default(autoincrement())
   nome       String
-  email      String
-  password   String
+  email      String @unique
+  senha      String
   created_at DateTime @default(now())
 }
