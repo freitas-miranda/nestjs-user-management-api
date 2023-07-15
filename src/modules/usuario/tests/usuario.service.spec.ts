@@ -19,4 +19,24 @@ describe('UsuarioService', () => {
 
     expect(usuarioRepositoryInMemory.items).toEqual([usuario]);
   });
+
+  it('deve editar um usuario', async () => {
+    const usuario = await service.create({
+      nome: 'Alan Miranda',
+      email: 'alan@miranda.com',
+      senha: '123456',
+    });
+
+    const newInfo = {
+      nome: 'Alan Freitas',
+      email: 'alan@freitas.com',
+      senha: '123455',
+    };
+
+    service.update(usuario.id, newInfo);
+
+    expect(usuarioRepositoryInMemory.items).toEqual([
+      { id: usuario.id, ...newInfo },
+    ]);
+  });
 });

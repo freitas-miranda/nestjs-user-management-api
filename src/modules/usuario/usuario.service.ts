@@ -31,7 +31,7 @@ export class UsuarioService {
   }
 
   update(id: string, updateUsuarioDto: UpdateUsuarioDto) {
-    return `This action updates a #${id} usuario com ${updateUsuarioDto}`;
+    return this.usuarioPersistenceRepository.update(id, updateUsuarioDto);
   }
 
   remove(id: string) {
