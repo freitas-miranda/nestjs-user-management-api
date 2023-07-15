@@ -29,7 +29,6 @@ export class UsuarioRepositoryPrisma implements UsuarioRepository {
     const usuario = await this.prisma.usuario.findUnique({
       where: { id },
     });
-    if (!usuario) return undefined;
     return Usuario.buildExisting(usuario);
   }
 
@@ -37,6 +36,7 @@ export class UsuarioRepositoryPrisma implements UsuarioRepository {
     const usuario = await this.prisma.usuario.findUnique({
       where: { email },
     });
+    if (!usuario) return undefined;
     return Usuario.buildExisting(usuario);
   }
 

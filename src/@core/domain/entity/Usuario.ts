@@ -12,6 +12,7 @@ export class Usuario {
   }
 
   static buildExisting(input: InputBuild) {
+    if (!input) throw new Error('Usuário não encontrado!');
     return new Usuario(input.id, input.nome, input.email, input.senha);
   }
 

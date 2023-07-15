@@ -40,7 +40,7 @@ describe('AlterarUsuario testes', () => {
       throw new Error('Não falhou!');
     } catch (error) {
       expect(error).toHaveProperty('message');
-      expect(error.message).toContain('Usuário não encontrado para editar!');
+      expect(error.message).toContain('Usuário não encontrado!');
     }
   });
 });

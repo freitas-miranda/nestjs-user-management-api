@@ -6,10 +6,6 @@ export class ExibirUsuario {
 
   async execute(id: string): Promise<Usuario> {
     const usuario = await this.repo.findById(id);
-
-    if (!usuario) {
-      throw new Error('Usuário não encontrado!');
-    }
     return usuario;
   }
 }
