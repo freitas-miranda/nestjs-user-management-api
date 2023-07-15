@@ -8,25 +8,25 @@ import {
   Delete,
 } from '@nestjs/common';
 import {
+  AlterarUsuario,
   AlterarUsuarioInput,
-  AlterarUsuarioUseCase,
-} from 'src/@core/application/usuario/alterar-usuario.use-case';
+} from 'src/@core/application/usecase/usuario/AlterarUsuario';
 import {
+  CriarUsuario,
   CriarUsuarioInput,
-  CriarUsuarioUseCase,
-} from 'src/@core/application/usuario/criar-usuario.use-case';
-import { DeletarUsuarioUseCase } from 'src/@core/application/usuario/deletar-usuario.user-case';
-import { ExibirUsuarioUseCase } from 'src/@core/application/usuario/exibir-usuario.user-case';
-import { ListarUsuarioUseCase } from 'src/@core/application/usuario/listar-usuario.user-case';
+} from 'src/@core/application/usecase/usuario/CriarUsuario';
+import { DeletarUsuario } from 'src/@core/application/usecase/usuario/DeletarUsuario';
+import { ExibirUsuario } from 'src/@core/application/usecase/usuario/ExibirUsuario';
+import { ListarUsuario } from 'src/@core/application/usecase/usuario/ListarUsuario';
 
 @Controller('usuario')
 export class UsuarioController {
   constructor(
-    private readonly alterar: AlterarUsuarioUseCase,
-    private readonly criar: CriarUsuarioUseCase,
-    private readonly deletar: DeletarUsuarioUseCase,
-    private readonly exibir: ExibirUsuarioUseCase,
-    private readonly listar: ListarUsuarioUseCase,
+    private readonly alterar: AlterarUsuario,
+    private readonly criar: CriarUsuario,
+    private readonly deletar: DeletarUsuario,
+    private readonly exibir: ExibirUsuario,
+    private readonly listar: ListarUsuario,
   ) {}
 
   @Post()

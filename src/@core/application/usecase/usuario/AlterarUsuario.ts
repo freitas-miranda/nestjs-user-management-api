@@ -1,7 +1,7 @@
-import { UsuarioRepositoryInterface } from 'src/@core/domain/usuario/usuario.repository-interface';
+import { UsuarioRepository } from '../../repository/UsuarioRepository';
 
-export class AlterarUsuarioUseCase {
-  constructor(private repo: UsuarioRepositoryInterface) {}
+export class AlterarUsuario {
+  constructor(private repo: UsuarioRepository) {}
 
   async execute(id: string, input: AlterarUsuarioInput) {
     const usuario = await this.repo.findById(id);

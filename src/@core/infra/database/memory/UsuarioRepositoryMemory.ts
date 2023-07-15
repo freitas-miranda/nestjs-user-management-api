@@ -1,13 +1,13 @@
-import { AlterarUsuarioInput } from 'src/@core/application/usuario/alterar-usuario.use-case';
-import { UsuarioRepositoryInterface } from '../../../domain/usuario/usuario.repository-interface';
-import { Usuario } from 'src/@core/domain/usuario/usuario.entity';
+import { AlterarUsuarioInput } from 'src/@core/application/usecase/usuario/AlterarUsuario';
+import { UsuarioRepository } from '../../../application/repository/UsuarioRepository';
+import { Usuario } from 'src/@core/domain/entity/Usuario';
 
-export class UsuarioRepositoryInMemory implements UsuarioRepositoryInterface {
+export class UsuarioRepositoryMemory implements UsuarioRepository {
   items: Usuario[] = [];
 
-  async insert(usuario: Usuario): Promise<Usuario> {
+  async insert(usuario: Usuario): Promise<{ id: string }> {
     this.items.push(usuario);
-    return usuario;
+    return { id: usuario.id };
   }
 
   async findAll(): Promise<Usuario[]> {

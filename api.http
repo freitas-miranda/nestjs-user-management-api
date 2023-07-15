@@ -11,7 +11,8 @@ Content-Type: application/json
 
 {
   "nome": "Alan Miranda",
-  "email": "freitas.miranda@gmail.com"
+  "email": "freitas.miranda@gmail.com",
+  "senha": "123456"
 }
 
 ### Alterar
