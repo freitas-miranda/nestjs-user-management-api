@@ -29,6 +29,7 @@ export class UsuarioRepositoryPrisma implements UsuarioRepository {
     const usuario = await this.prisma.usuario.findUnique({
       where: { id },
     });
+    if (!usuario) return undefined;
     return Usuario.buildExisting(usuario);
   }
 

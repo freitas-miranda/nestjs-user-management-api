@@ -6,6 +6,10 @@ export class AlterarUsuario {
   async execute(id: string, input: AlterarUsuarioInput) {
     const usuario = await this.repo.findById(id);
 
+    if (!usuario) {
+      throw new Error('Usuário não encontrado para editar!');
+    }
+
     usuario.nome = input.nome;
     usuario.email = input.email;
     usuario.senha = input.senha;
