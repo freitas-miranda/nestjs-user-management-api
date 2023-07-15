@@ -4,17 +4,17 @@ import { Usuario } from 'src/@core/domain/entity/Usuario';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 export class UsuarioRepositoryPrisma implements UsuarioRepository {
-  constructor(private prismaService: PrismaService) {}
+  constructor(private prisma: PrismaService) {}
 
   async insert(usuario: Usuario): Promise<{ id: string }> {
-    const inserido = await this.prismaService.usuario.create({
+    const inserido = await this.prisma.usuario.create({
       data: usuario,
     });
     return { id: inserido.id };
   }
 
   async findAll(): Promise<Usuario[]> {
-    const usuarios = await this.prismaService.usuario.findMany();
+    const usuarios = await this.prisma.usuario.findMany();
     const list: Usuario[] = [];
 
     usuarios.map((item) => {
@@ -26,21 +26,28 @@ export class UsuarioRepositoryPrisma implements UsuarioRepository {
   }
 
   async findById(id: string): Promise<Usuario> {
-    const usuario = await this.prismaService.usuario.findUnique({
+    const usuario = await this.prisma.usuario.findUnique({
       where: { id },
     });
     return Usuario.buildExisting(usuario);
   }
 
+  async findByEmail(email: string): Promise<Usuario> {
+    const usuario = await this.prisma.usuario.findUnique({
+      where: { email },
+    });
+    return Usuario.buildExisting(usuario);
+  }
+
   async update(id: string, input: AlterarUsuarioInput): Promise<void> {
-    await this.prismaService.usuario.update({
+    await this.prisma.usuario.update({
       where: { id },
       data: input,
     });
   }
 
   async delete(id: string): Promise<void> {
-    await this.prismaService.usuario.delete({
+    await this.prisma.usuario.delete({
       where: { id },
     });
   }

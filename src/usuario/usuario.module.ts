@@ -7,6 +7,8 @@ import { CriarUsuario } from 'src/@core/application/usecase/usuario/CriarUsuario
 import { DeletarUsuario } from 'src/@core/application/usecase/usuario/DeletarUsuario';
 import { ExibirUsuario } from 'src/@core/application/usecase/usuario/ExibirUsuario';
 import { ListarUsuario } from 'src/@core/application/usecase/usuario/ListarUsuario';
+import { UsuarioRepositoryPrisma } from 'src/@core/infra/database/prisma/UsuarioRepositoryPrisma';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Module({
   controllers: [UsuarioController],
@@ -14,6 +16,13 @@ import { ListarUsuario } from 'src/@core/application/usecase/usuario/ListarUsuar
     {
       provide: UsuarioRepositoryMemory,
       useClass: UsuarioRepositoryMemory,
+    },
+    {
+      provide: UsuarioRepositoryPrisma,
+      useFactory: (prisma: PrismaService) => {
+        return new UsuarioRepositoryPrisma(prisma);
+      },
+      inject: [PrismaService],
     },
     // UsuarioRepositoryPrisma,
     // UsuarioRepositoryHttp,
@@ -33,35 +42,35 @@ import { ListarUsuario } from 'src/@core/application/usecase/usuario/ListarUsuar
       useFactory: (repo: UsuarioRepository) => {
         return new AlterarUsuario(repo);
       },
-      inject: [UsuarioRepositoryMemory],
+      inject: [UsuarioRepositoryPrisma],
     },
     {
       provide: CriarUsuario,
       useFactory: (repo: UsuarioRepository) => {
         return new CriarUsuario(repo);
       },
-      inject: [UsuarioRepositoryMemory],
+      inject: [UsuarioRepositoryPrisma],
     },
     {
       provide: DeletarUsuario,
       useFactory: (repo: UsuarioRepository) => {
         return new DeletarUsuario(repo);
       },
-      inject: [UsuarioRepositoryMemory],
+      inject: [UsuarioRepositoryPrisma],
     },
     {
       provide: ExibirUsuario,
       useFactory: (repo: UsuarioRepository) => {
         return new ExibirUsuario(repo);
       },
-      inject: [UsuarioRepositoryMemory],
+      inject: [UsuarioRepositoryPrisma],
     },
     {
       provide: ListarUsuario,
       useFactory: (repo: UsuarioRepository) => {
         return new ListarUsuario(repo);
       },
-      inject: [UsuarioRepositoryMemory],
+      inject: [UsuarioRepositoryPrisma],
     },
   ],
 })

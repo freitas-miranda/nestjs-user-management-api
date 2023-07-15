@@ -3,7 +3,7 @@
 GET http://localhost:3000/usuario
 
 ### Exibir
-GET http://localhost:3000/usuario/e26bc059-df12-4b39-93c2-e3cb8d6ecd14
+GET http://localhost:3000/usuario/fbf0b270-9dac-4194-9a7d-d9934a3077cf
 
 ### Criar
 POST http://localhost:3000/usuario
@@ -24,4 +24,4 @@ Content-Type: application/json
 }
 
 ### 
-DELETE http://localhost:3000/usuario/3
+DELETE http://localhost:3000/usuario/11cf2b70-e399-49d5-adf4-bc17dbc9071d

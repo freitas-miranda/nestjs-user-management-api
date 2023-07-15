@@ -19,6 +19,11 @@ export class UsuarioRepositoryMemory implements UsuarioRepository {
     return usuario;
   }
 
+  async findByEmail(email: string): Promise<Usuario> {
+    const usuario = this.items.find((item) => item.email === email);
+    return usuario;
+  }
+
   async update(id: string, input: AlterarUsuarioInput): Promise<void> {
     const usuarioExistente = this.items.find((item) => item.id === id);
     if (!usuarioExistente) return;
