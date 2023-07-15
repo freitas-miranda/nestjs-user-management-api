@@ -13,7 +13,7 @@ describe('ExibirUsuarioUseCase testes', () => {
     useCaseView = new ExibirUsuarioUseCase(repo);
   });
 
-  it('deve editar um usuario', async () => {
+  it('deve exibir um usuario', async () => {
     const usuario = await useCaseCreate.execute({
       nome: 'Alan Miranda - Alteração',
       email: 'alan@miranda.com',
