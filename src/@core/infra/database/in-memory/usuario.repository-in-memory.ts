@@ -30,6 +30,6 @@ export class UsuarioRepositoryInMemory implements UsuarioRepositoryInterface {
 
   async delete(id: string): Promise<void> {
     const usuarioIndex = this.items.findIndex((item) => item.id === id);
-    this.items.slice(usuarioIndex, 1);
+    this.items.splice(usuarioIndex, 1);
   }
 }

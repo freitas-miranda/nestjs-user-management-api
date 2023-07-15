@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UsuarioController } from './usuario.controller';
-import { createMockModule } from './moker';
+import { createMockModule } from '../../@core/infra/common/tests/moker';
 import { UsuarioRepositoryInMemory } from 'src/@core/infra/database/in-memory/usuario.repository-in-memory';
 import { AlterarUsuarioUseCase } from 'src/@core/application/usuario/alterar-usuario.use-case';
 import { CriarUsuarioUseCase } from 'src/@core/application/usuario/criar-usuario.use-case';
