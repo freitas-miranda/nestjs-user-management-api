@@ -5,6 +5,8 @@
 - Express
 - Jest
 
+## Arquitetura
+- Hexagonal
 
 ## Comandos
 ```bash
@@ -12,5 +14,5 @@
 $ yarn install
 
 # Iniciar
-$ yarn run start:dev
+$ yarn run dev
 ```
