@@ -1,11 +1,11 @@
-import { UpdateUsuarioDto } from '../dto/update-usuario.dto';
-import Usuario from '../usuario.entity';
-import { UsuarioRepositoryInterface } from './usuario.repository-interface';
+import { AlterarUsuarioInput } from 'src/@core/application/usuario/alterar-usuario.use-case';
+import { UsuarioRepositoryInterface } from '../../../domain/usuario/usuario.repository-interface';
+import { Usuario } from 'src/@core/domain/usuario/usuario.entity';
 
 export class UsuarioRepositoryInMemory implements UsuarioRepositoryInterface {
   items: Usuario[] = [];
 
-  async create(usuario: Usuario): Promise<Usuario> {
+  async insert(usuario: Usuario): Promise<Usuario> {
     this.items.push(usuario);
     return usuario;
   }
@@ -19,12 +19,13 @@ export class UsuarioRepositoryInMemory implements UsuarioRepositoryInterface {
     return usuario;
   }
 
-  async update(id: string, updateUsuarioDto: UpdateUsuarioDto): Promise<void> {
+  async update(id: string, input: AlterarUsuarioInput): Promise<void> {
     const usuarioExistente = this.items.find((item) => item.id === id);
+    if (!usuarioExistente) return;
 
-    usuarioExistente.nome = updateUsuarioDto.nome;
-    usuarioExistente.email = updateUsuarioDto.email;
-    usuarioExistente.senha = updateUsuarioDto.senha;
+    usuarioExistente.nome = input.nome;
+    usuarioExistente.email = input.email;
+    usuarioExistente.senha = input.senha;
   }
 
   async delete(id: string): Promise<void> {

@@ -7,36 +7,50 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { UsuarioService } from './usuario.service';
-import { CreateUsuarioDto } from './dto/create-usuario.dto';
-import { UpdateUsuarioDto } from './dto/update-usuario.dto';
+import {
+  AlterarUsuarioInput,
+  AlterarUsuarioUseCase,
+} from 'src/@core/application/usuario/alterar-usuario.use-case';
+import {
+  CriarUsuarioInput,
+  CriarUsuarioUseCase,
+} from 'src/@core/application/usuario/criar-usuario.use-case';
+import { DeletarUsuarioUseCase } from 'src/@core/application/usuario/deletar-usuario.user-case';
+import { ExibirUsuarioUseCase } from 'src/@core/application/usuario/exibir-usuario.user-case';
+import { ListarUsuarioUseCase } from 'src/@core/application/usuario/listar-usuario.user-case';
 
 @Controller('usuario')
 export class UsuarioController {
-  constructor(private readonly usuarioService: UsuarioService) {}
+  constructor(
+    private readonly alterar: AlterarUsuarioUseCase,
+    private readonly criar: CriarUsuarioUseCase,
+    private readonly deletar: DeletarUsuarioUseCase,
+    private readonly exibir: ExibirUsuarioUseCase,
+    private readonly listar: ListarUsuarioUseCase,
+  ) {}
 
   @Post()
-  create(@Body() createUsuarioDto: CreateUsuarioDto) {
-    return this.usuarioService.create(createUsuarioDto);
+  create(@Body() input: CriarUsuarioInput) {
+    return this.criar.execute(input);
   }
 
   @Get()
   findAll() {
-    return this.usuarioService.findAll();
+    return this.listar.execute();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.usuarioService.findOne(id);
+    return this.exibir.execute(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUsuarioDto: UpdateUsuarioDto) {
-    return this.usuarioService.update(id, updateUsuarioDto);
+  update(@Param('id') id: string, @Body() input: AlterarUsuarioInput) {
+    return this.alterar.execute(id, input);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.usuarioService.remove(id);
+    return this.deletar.execute(id);
   }
 }

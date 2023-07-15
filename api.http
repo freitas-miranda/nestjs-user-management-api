@@ -1,15 +1,11 @@
-
-# API Status
-GET http://localhost:3000
-
 # Usuário ---------------------------------------------
-### 
+### Listar
 GET http://localhost:3000/usuario
 
-### 
-GET http://localhost:3000/usuario/ab6ef8f8-7b10-4570-89c3-c603a8507bf8
+### Exibir
+GET http://localhost:3000/usuario/e26bc059-df12-4b39-93c2-e3cb8d6ecd14
 
-### 
+### Criar
 POST http://localhost:3000/usuario
 Content-Type: application/json
 
@@ -18,12 +14,12 @@ Content-Type: application/json
   "email": "freitas.miranda@gmail.com"
 }
 
-### 
-PATCH http://localhost:3000/usuario/2
+### Alterar
+PATCH http://localhost:3000/usuario/e26bc059-df12-4b39-93c2-e3cb8d6ecd14
 Content-Type: application/json
 
 {
-  "nome": "Alan Miranda"
+  "nome": "Alan Freitas"
 }
 
 ### 
