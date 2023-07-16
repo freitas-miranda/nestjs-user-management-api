@@ -6,7 +6,7 @@ import { AppModule } from 'src/app.module';
 const params = {
   nome: 'Alan Miranda',
   email: 'teste@miranda.com',
-  senha: '123456',
+  senha: '12345678',
 };
 
 describe('UsuarioController (e2e)', () => {
@@ -45,7 +45,6 @@ describe('UsuarioController (e2e)', () => {
     expect(usuario).toHaveProperty('id');
     expect(usuario).toHaveProperty('nome');
     expect(usuario).toHaveProperty('email');
-    expect(usuario).toHaveProperty('senha');
   });
 
   it('/usuario/:id (GET)', async () => {
@@ -57,7 +56,6 @@ describe('UsuarioController (e2e)', () => {
     expect(usuario).toHaveProperty('id');
     expect(usuario).toHaveProperty('nome');
     expect(usuario).toHaveProperty('email');
-    expect(usuario).toHaveProperty('senha');
   });
 
   it('/usuario/:id (PATCH)', async () => {

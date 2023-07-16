@@ -3,7 +3,7 @@
 GET http://localhost:3000/usuario
 
 ### Exibir usuário
-GET http://localhost:3000/usuario/fbf0b270-9dac-4194-9a7d-d9934a3077cf
+GET http://localhost:3000/usuario/bcf95c52-61f4-45b4-bf04-735f28e99e2a
 
 ### Criar usuário
 POST http://localhost:3000/usuario
@@ -12,16 +12,16 @@ Content-Type: application/json
 {
   "nome": "Alan Miranda",
   "email": "freitas.miranda@gmail.com",
-  "senha": "123456"
+  "senha": "12345678"
 }
 
 ### Alterar usuário
-PATCH http://localhost:3000/usuario/e26bc059-df12-4b39-93c2-e3cb8d6ecd14
+PATCH http://localhost:3000/usuario/bcf95c52-61f4-45b4-bf04-735f28e99e2a
 Content-Type: application/json
 
 {
-  "nome": "Alan Freitas"
+  "nome": "Alan Freitass"
 }
 
 ###  Deletar usuário
-DELETE http://localhost:3000/usuario/11cf2b70-e399-49d5-adf4-bc17dbc9071d
+DELETE http://localhost:3000/usuario/bcf95c52-61f4-45b4-bf04-735f28e99e2a

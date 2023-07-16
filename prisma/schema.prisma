@@ -14,7 +14,8 @@ model Usuario {
   id         String   @id @default(uuid())
   nome       String
   email      String   @unique
-  senha      String
+  senhaHash  String
+  senhaSalt  String
   created_at DateTime @default(now())
 
   @@map("usuarios")

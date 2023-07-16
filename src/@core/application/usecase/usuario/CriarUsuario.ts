@@ -1,7 +1,7 @@
-import { Usuario } from 'src/@core/domain/entity/Usuario';
-import { UsuarioRepository } from '../../repository/UsuarioRepository';
+import Usuario from 'src/@core/domain/entity/Usuario';
+import UsuarioRepository from '../../repository/UsuarioRepository';
 
-export class CriarUsuario {
+export default class CriarUsuario {
   constructor(private repo: UsuarioRepository) {}
 
   async execute(input: CriarUsuarioInput): Promise<{ id: string }> {
@@ -18,7 +18,7 @@ export class CriarUsuario {
 
     const usuario = await Usuario.create(nome, email, senha);
 
-    const retorno = await this.repo.insert(usuario);
+    const retorno = await this.repo.save(usuario);
     return retorno;
   }
 }

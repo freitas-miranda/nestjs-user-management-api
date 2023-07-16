@@ -1,25 +1,22 @@
-import { UsuarioRepository } from '../../repository/UsuarioRepository';
+import Nome from 'src/@core/domain/entity/Nome';
+import UsuarioRepository from '../../repository/UsuarioRepository';
+import Email from 'src/@core/domain/entity/Email';
 
-export class AlterarUsuario {
+export default class AlterarUsuario {
   constructor(private repo: UsuarioRepository) {}
 
   async execute(id: string, input: AlterarUsuarioInput) {
+    const { nome, email } = input;
     const usuario = await this.repo.findById(id);
 
-    if (!usuario) {
-      throw new Error('Usuário não encontrado para editar!');
-    }
+    if (nome) usuario.nome = new Nome(nome);
+    if (email) usuario.email = new Email(email);
 
-    usuario.nome = input.nome;
-    usuario.email = input.email;
-    usuario.senha = input.senha;
-
-    await this.repo.update(id, usuario);
+    await this.repo.update(usuario);
   }
 }
 
 export type AlterarUsuarioInput = {
   nome: string;
   email: string;
-  senha: string;
 };

@@ -1,12 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { UsuarioController } from './usuario.controller';
+import UsuarioController from './usuario.controller';
 import { createMockModule } from '../@core/infra/common/tests/moker';
-import { UsuarioRepositoryMemory } from 'src/@core/infra/database/memory/UsuarioRepositoryMemory';
-import { AlterarUsuario } from 'src/@core/application/usecase/usuario/AlterarUsuario';
-import { CriarUsuario } from 'src/@core/application/usecase/usuario/CriarUsuario';
-import { DeletarUsuario } from 'src/@core/application/usecase/usuario/DeletarUsuario';
-import { ExibirUsuario } from 'src/@core/application/usecase/usuario/ExibirUsuario';
-import { ListarUsuario } from 'src/@core/application/usecase/usuario/ListarUsuario';
+import UsuarioRepositoryMemory from 'src/@core/infra/database/memory/UsuarioRepositoryMemory';
+import AlterarUsuario from 'src/@core/application/usecase/usuario/AlterarUsuario';
+import CriarUsuario from 'src/@core/application/usecase/usuario/CriarUsuario';
+import DeletarUsuario from 'src/@core/application/usecase/usuario/DeletarUsuario';
+import ExibirUsuario from 'src/@core/application/usecase/usuario/ExibirUsuario';
+import ListarUsuario from 'src/@core/application/usecase/usuario/ListarUsuario';
 
 const criarUsuario = { execute: jest.fn() };
 const alterarUsuario = { execute: jest.fn() };
@@ -54,7 +54,11 @@ describe('UsuarioController', () => {
   });
 
   it('deve criar um registro', () => {
-    const input = { nome: 'Alan', email: 'alan@miranda.com', senha: '123456' };
+    const input = {
+      nome: 'Alan',
+      email: 'alan@miranda.com',
+      senha: '12345678',
+    };
     controller.create(input);
     expect(criarUsuario.execute).toHaveBeenCalled();
     expect(criarUsuario.execute.mock.calls[0][0]).toEqual(input);
@@ -74,7 +78,11 @@ describe('UsuarioController', () => {
 
   it('deve alterar um registro', () => {
     const id = 'ABC';
-    const input = { nome: 'Alan', email: 'alan@miranda.com', senha: '123456' };
+    const input = {
+      nome: 'Alan',
+      email: 'alan@miranda.com',
+      senha: '12345678',
+    };
     controller.update(id, input);
     expect(alterarUsuario.execute).toHaveBeenCalled();
     expect(alterarUsuario.execute.mock.calls[0][0]).toEqual(id);

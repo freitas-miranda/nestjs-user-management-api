@@ -1,13 +1,13 @@
-import { UsuarioRepositoryMemory } from '../@core/infra/database/memory/UsuarioRepositoryMemory';
+import UsuarioRepositoryMemory from '../@core/infra/database/memory/UsuarioRepositoryMemory';
 import { Module } from '@nestjs/common';
-import { UsuarioController } from './usuario.controller';
-import { AlterarUsuario } from 'src/@core/application/usecase/usuario/AlterarUsuario';
-import { UsuarioRepository } from 'src/@core/application/repository/UsuarioRepository';
-import { CriarUsuario } from 'src/@core/application/usecase/usuario/CriarUsuario';
-import { DeletarUsuario } from 'src/@core/application/usecase/usuario/DeletarUsuario';
-import { ExibirUsuario } from 'src/@core/application/usecase/usuario/ExibirUsuario';
-import { ListarUsuario } from 'src/@core/application/usecase/usuario/ListarUsuario';
-import { UsuarioRepositoryPrisma } from 'src/@core/infra/database/prisma/UsuarioRepositoryPrisma';
+import UsuarioController from './usuario.controller';
+import AlterarUsuario from 'src/@core/application/usecase/usuario/AlterarUsuario';
+import UsuarioRepository from 'src/@core/application/repository/UsuarioRepository';
+import CriarUsuario from 'src/@core/application/usecase/usuario/CriarUsuario';
+import DeletarUsuario from 'src/@core/application/usecase/usuario/DeletarUsuario';
+import ExibirUsuario from 'src/@core/application/usecase/usuario/ExibirUsuario';
+import ListarUsuario from 'src/@core/application/usecase/usuario/ListarUsuario';
+import UsuarioRepositoryPrisma from 'src/@core/infra/database/prisma/UsuarioRepositoryPrisma';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Module({

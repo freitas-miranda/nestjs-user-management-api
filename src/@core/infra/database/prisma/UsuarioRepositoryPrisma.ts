@@ -1,16 +1,28 @@
-import { AlterarUsuarioInput } from 'src/@core/application/usecase/usuario/AlterarUsuario';
-import { UsuarioRepository } from '../../../application/repository/UsuarioRepository';
-import { Usuario } from 'src/@core/domain/entity/Usuario';
+import UsuarioRepository from '../../../application/repository/UsuarioRepository';
+import Usuario from 'src/@core/domain/entity/Usuario';
 import { PrismaService } from 'src/prisma/prisma.service';
 
-export class UsuarioRepositoryPrisma implements UsuarioRepository {
+export default class UsuarioRepositoryPrisma implements UsuarioRepository {
   constructor(private prisma: PrismaService) {}
 
-  async insert(usuario: Usuario): Promise<{ id: string }> {
+  async save(usuario: Usuario): Promise<{ id: string }> {
     const inserido = await this.prisma.usuario.create({
-      data: usuario,
+      data: usuario.toJSON(),
     });
     return { id: inserido.id };
+  }
+
+  async update(usuario: Usuario): Promise<void> {
+    await this.prisma.usuario.update({
+      where: { id: usuario.id },
+      data: usuario.toJSON(),
+    });
+  }
+
+  async delete(id: string): Promise<void> {
+    await this.prisma.usuario.delete({
+      where: { id },
+    });
   }
 
   async findAll(): Promise<Usuario[]> {
@@ -18,7 +30,7 @@ export class UsuarioRepositoryPrisma implements UsuarioRepository {
     const list: Usuario[] = [];
 
     usuarios.map((item) => {
-      const usuario = Usuario.buildExisting(item);
+      const usuario = Usuario.fromJSON(item);
       list.push(usuario);
     });
 
@@ -29,7 +41,7 @@ export class UsuarioRepositoryPrisma implements UsuarioRepository {
     const usuario = await this.prisma.usuario.findUnique({
       where: { id },
     });
-    return Usuario.buildExisting(usuario);
+    return Usuario.fromJSON(usuario);
   }
 
   async findByEmail(email: string): Promise<Usuario> {
@@ -37,19 +49,6 @@ export class UsuarioRepositoryPrisma implements UsuarioRepository {
       where: { email },
     });
     if (!usuario) return undefined;
-    return Usuario.buildExisting(usuario);
-  }
-
-  async update(id: string, input: AlterarUsuarioInput): Promise<void> {
-    await this.prisma.usuario.update({
-      where: { id },
-      data: input,
-    });
-  }
-
-  async delete(id: string): Promise<void> {
-    await this.prisma.usuario.delete({
-      where: { id },
-    });
+    return Usuario.fromJSON(usuario);
   }
 }

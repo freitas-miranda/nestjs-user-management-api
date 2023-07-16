@@ -1,12 +1,11 @@
-import { Usuario } from '../../domain/entity/Usuario';
-import { AlterarUsuarioInput } from '../usecase/usuario/AlterarUsuario';
-import { CriarUsuarioInput } from '../usecase/usuario/CriarUsuario';
+import Usuario from '../../domain/entity/Usuario';
 
-export interface UsuarioRepository {
-  insert(input: CriarUsuarioInput): Promise<{ id: string }>;
+export default interface UsuarioRepository {
+  save(usuario: Usuario): Promise<{ id: string }>;
+  update(usuario: Usuario): Promise<void>;
+  delete(id: string): Promise<void>;
+
   findAll(): Promise<Usuario[]>;
   findById(id: string): Promise<Usuario>;
   findByEmail(email: string): Promise<Usuario>;
-  update(id: string, input: AlterarUsuarioInput): Promise<void>;
-  delete(id: string): Promise<void>;
 }

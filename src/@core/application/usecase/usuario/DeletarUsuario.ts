@@ -1,6 +1,6 @@
-import { UsuarioRepository } from '../../repository/UsuarioRepository';
+import UsuarioRepository from '../../repository/UsuarioRepository';
 
-export class DeletarUsuario {
+export default class DeletarUsuario {
   constructor(private repo: UsuarioRepository) {}
 
   async execute(id: string) {

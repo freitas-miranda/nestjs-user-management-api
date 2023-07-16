@@ -1,5 +1,5 @@
-import { UsuarioRepositoryMemory } from 'src/@core/infra/database/memory/UsuarioRepositoryMemory';
-import { CriarUsuario } from './CriarUsuario';
+import UsuarioRepositoryMemory from 'src/@core/infra/database/memory/UsuarioRepositoryMemory';
+import CriarUsuario from './CriarUsuario';
 
 describe('ListarUsuario testes', () => {
   let useCase: CriarUsuario;
@@ -14,13 +14,13 @@ describe('ListarUsuario testes', () => {
     await useCase.execute({
       nome: 'Alan Miranda',
       email: 'alan@miranda.com',
-      senha: '123456',
+      senha: '12345678',
     });
 
     await useCase.execute({
       nome: 'Raiane Bele',
       email: 'raiane@bele.com',
-      senha: '123456',
+      senha: '12345678',
     });
 
     expect(repo.items.length).toEqual(2);

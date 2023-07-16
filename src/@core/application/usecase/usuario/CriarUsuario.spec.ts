@@ -1,26 +1,27 @@
-import { UsuarioRepositoryMemory } from 'src/@core/infra/database/memory/UsuarioRepositoryMemory';
-import { CriarUsuario } from './CriarUsuario';
+import UsuarioRepositoryMemory from 'src/@core/infra/database/memory/UsuarioRepositoryMemory';
+import CriarUsuario from './CriarUsuario';
 
 describe('CriarUsuario testes', () => {
-  let useCase: CriarUsuario;
-  let repo: UsuarioRepositoryMemory;
+  let criarUsuario: CriarUsuario;
+  let usuarioRepository: UsuarioRepositoryMemory;
 
   beforeEach(async () => {
-    repo = new UsuarioRepositoryMemory();
-    useCase = new CriarUsuario(repo);
+    usuarioRepository = new UsuarioRepositoryMemory();
+    criarUsuario = new CriarUsuario(usuarioRepository);
   });
 
   it('Deve criar um usuario', async () => {
     const params = {
       nome: 'Alan Miranda',
       email: 'alan@miranda.com',
-      senha: '123456',
+      senha: '12345678',
     };
 
-    const usuario = await useCase.execute(params);
-    params['id'] = usuario.id;
+    const usuario = await criarUsuario.execute(params);
 
-    expect(repo.items).toEqual([params]);
+    expect(usuarioRepository.items[0].id).toEqual(usuario.id);
+    expect(usuarioRepository.items[0].nome).toEqual(params.nome);
+    expect(usuarioRepository.items[0].email).toEqual(params.email);
   });
 
   it('Não deve criar mais de um usuário com mesmo email', async () => {
@@ -28,13 +29,12 @@ describe('CriarUsuario testes', () => {
       const params = {
         nome: 'Alan Miranda',
         email: 'alan@miranda.com',
-        senha: '123456',
+        senha: '12345678',
       };
 
-      // Garantir que o usujário exista
-      await useCase.execute(params);
-
-      await useCase.execute(params);
+      // Garantir que o usuario exista
+      await criarUsuario.execute(params);
+      await criarUsuario.execute(params);
 
       throw new Error('Não falhou!');
     } catch (error) {
@@ -48,10 +48,10 @@ describe('CriarUsuario testes', () => {
   it('Não deve criar usuário com nome inválido', async () => {
     expect(
       async () =>
-        await useCase.execute({
+        await criarUsuario.execute({
           nome: 'Alan',
           email: 'alan@miranda.com',
-          senha: '123456',
+          senha: '12345678',
         }),
     ).rejects.toThrow(new Error('Nome inválido!'));
   });
