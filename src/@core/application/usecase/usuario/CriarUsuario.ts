@@ -7,6 +7,10 @@ export class CriarUsuario {
   async execute(input: CriarUsuarioInput): Promise<{ id: string }> {
     const { nome, email, senha } = input;
 
+    if (nome.split(' ').length < 2) {
+      throw new Error(`Nome inválido!`);
+    }
+
     const usuarioExistente = await this.repo.findByEmail(email);
     if (usuarioExistente) {
       throw new Error(`Já existe usuário cadastrado com este email!`);

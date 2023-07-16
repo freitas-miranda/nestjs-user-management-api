@@ -10,7 +10,7 @@ describe('CriarUsuario testes', () => {
     useCase = new CriarUsuario(repo);
   });
 
-  it('deve criar um usuario', async () => {
+  it('Deve criar um usuario', async () => {
     const params = {
       nome: 'Alan Miranda',
       email: 'alan@miranda.com',
@@ -23,7 +23,7 @@ describe('CriarUsuario testes', () => {
     expect(repo.items).toEqual([params]);
   });
 
-  it('não deve permitir criar mais de um usuário com mesmo email', async () => {
+  it('Não deve criar mais de um usuário com mesmo email', async () => {
     try {
       const params = {
         nome: 'Alan Miranda',
@@ -43,5 +43,16 @@ describe('CriarUsuario testes', () => {
         'Já existe usuário cadastrado com este email!',
       );
     }
+  });
+
+  it('Não deve criar usuário com nome inválido', async () => {
+    expect(
+      async () =>
+        await useCase.execute({
+          nome: 'Alan',
+          email: 'alan@miranda.com',
+          senha: '123456',
+        }),
+    ).rejects.toThrow(new Error('Nome inválido!'));
   });
 });
