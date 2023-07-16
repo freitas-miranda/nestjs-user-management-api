@@ -1,6 +1,6 @@
 import UsuarioRepositoryMemory from 'src/@core/infra/database/memory/UsuarioRepositoryMemory';
-import AlterarUsuario from './AlterarUsuario';
-import CriarUsuario from './CriarUsuario';
+import AlterarUsuario from '../../src/@core/application/usecase/usuario/AlterarUsuario';
+import CriarUsuario from '../../src/@core/application/usecase/usuario/CriarUsuario';
 
 const newUser = {
   nome: 'Alan Miranda',
@@ -14,14 +14,14 @@ const newInfo = {
 };
 
 describe('AlterarUsuario testes', () => {
-  let repo: UsuarioRepositoryMemory;
+  let usuarioRepository: UsuarioRepositoryMemory;
   let criarUsuario: CriarUsuario;
   let alterarUsuario: AlterarUsuario;
 
   beforeEach(async () => {
-    repo = new UsuarioRepositoryMemory();
-    criarUsuario = new CriarUsuario(repo);
-    alterarUsuario = new AlterarUsuario(repo);
+    usuarioRepository = new UsuarioRepositoryMemory();
+    criarUsuario = new CriarUsuario(usuarioRepository);
+    alterarUsuario = new AlterarUsuario(usuarioRepository);
   });
 
   it('deve editar um usuario', async () => {
@@ -29,9 +29,9 @@ describe('AlterarUsuario testes', () => {
 
     await alterarUsuario.execute(usuario.id, newInfo);
 
-    expect(repo.items[0].id).toEqual(usuario.id);
-    expect(repo.items[0].nome.getValue()).toEqual(newInfo.nome);
-    expect(repo.items[0].email.getValue()).toEqual(newInfo.email);
+    expect(usuarioRepository.items[0].id).toEqual(usuario.id);
+    expect(usuarioRepository.items[0].nome.getValue()).toEqual(newInfo.nome);
+    expect(usuarioRepository.items[0].email.getValue()).toEqual(newInfo.email);
   });
 
   it('deve avisar que o usuário não foi encontrado ao tentar editar', async () => {

@@ -60,19 +60,15 @@
       "json",
       "ts"
     ],
-    "modulePaths": [
-      "<rootDir>"
-    ],    
-    "rootDir": "src",
+    "rootDir": ".",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "@swc/jest"
     },
-    "collectCoverageFrom": [
-      "**/*.(t|j)s"
-    ],
+    "collectCoverageFrom": [ "**/*.(t|j)s"],
+    "modulePaths": [ "<rootDir>"],    
     "moduleNameMapper": {
-      "^src/(.*)$": "<rootDir>/$1"
+      "^src/(.*)$": "<rootDir>/src/$1"
     },
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"

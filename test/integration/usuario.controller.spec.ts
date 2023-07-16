@@ -1,12 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import UsuarioController from './usuario.controller';
-import { createMockModule } from '../@core/infra/common/tests/moker';
-import UsuarioRepositoryMemory from 'src/@core/infra/database/memory/UsuarioRepositoryMemory';
-import AlterarUsuario from 'src/@core/application/usecase/usuario/AlterarUsuario';
-import CriarUsuario from 'src/@core/application/usecase/usuario/CriarUsuario';
-import DeletarUsuario from 'src/@core/application/usecase/usuario/DeletarUsuario';
-import ExibirUsuario from 'src/@core/application/usecase/usuario/ExibirUsuario';
-import ListarUsuario from 'src/@core/application/usecase/usuario/ListarUsuario';
+import UsuarioController from '../../src/usuario/usuario.controller';
+import { createMockModule } from '../../src/@core/infra/common/tests/moker';
+import UsuarioRepositoryMemory from '../../src/@core/infra/database/memory/UsuarioRepositoryMemory';
+import AlterarUsuario from '../../src/@core/application/usecase/usuario/AlterarUsuario';
+import CriarUsuario from '../../src/@core/application/usecase/usuario/CriarUsuario';
+import DeletarUsuario from '../../src/@core/application/usecase/usuario/DeletarUsuario';
+import ExibirUsuario from '../../src/@core/application/usecase/usuario/ExibirUsuario';
+import ListarUsuario from '../../src/@core/application/usecase/usuario/ListarUsuario';
 
 const criarUsuario = { execute: jest.fn() };
 const alterarUsuario = { execute: jest.fn() };
