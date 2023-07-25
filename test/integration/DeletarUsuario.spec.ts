@@ -1,6 +1,6 @@
-import CriarUsuario from 'src/@core/application/usecase/usuario/CriarUsuario';
-import DeletarUsuario from 'src/@core/application/usecase/usuario/DeletarUsuario';
-import UsuarioRepositoryMemory from 'src/@core/infra/database/memory/UsuarioRepositoryMemory';
+import UsuarioRepositoryMemory from '@database/memory/UsuarioRepositoryMemory';
+import CriarUsuario from '@usecase/usuario/CriarUsuario';
+import DeletarUsuario from '@usecase/usuario/DeletarUsuario';
 
 describe('DeletarUsuario testes', () => {
   let repo: UsuarioRepositoryMemory;

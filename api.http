@@ -3,7 +3,7 @@
 GET http://localhost:3000/usuario
 
 ### Exibir usuário
-GET http://localhost:3000/usuario/bcf95c52-61f4-45b4-bf04-735f28e99e2a
+GET http://localhost:3000/usuario/af9c0d39-f395-46a1-95fc-589b2bd64faf
 
 ### Criar usuário
 POST http://localhost:3000/usuario
@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ### Alterar usuário
-PATCH http://localhost:3000/usuario/bcf95c52-61f4-45b4-bf04-735f28e99e2a
+PATCH http://localhost:3000/usuario/af9c0d39-f395-46a1-95fc-589b2bd64faf
 Content-Type: application/json
 
 {
@@ -24,4 +24,4 @@ Content-Type: application/json
 }
 
 ###  Deletar usuário
-DELETE http://localhost:3000/usuario/bcf95c52-61f4-45b4-bf04-735f28e99e2a
+DELETE http://localhost:3000/usuario/af9c0d39-f395-46a1-95fc-589b2bd64faf

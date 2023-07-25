@@ -1,6 +1,6 @@
-import CriarUsuario from 'src/@core/application/usecase/usuario/CriarUsuario';
-import ExibirUsuario from 'src/@core/application/usecase/usuario/ExibirUsuario';
-import UsuarioRepositoryMemory from 'src/@core/infra/database/memory/UsuarioRepositoryMemory';
+import UsuarioRepositoryMemory from '@database/memory/UsuarioRepositoryMemory';
+import CriarUsuario from '@usecase/usuario/CriarUsuario';
+import ExibirUsuario from '@usecase/usuario/ExibirUsuario';
 
 describe('ExibirUsuario testes', () => {
   let repo: UsuarioRepositoryMemory;

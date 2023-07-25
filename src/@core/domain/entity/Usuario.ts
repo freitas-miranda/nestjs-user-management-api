@@ -1,4 +1,5 @@
-import { log } from 'console';
+import { randomUUID } from 'node:crypto';
+
 import Email from './Email';
 import Nome from './Nome';
 import Senha from './Senha';
@@ -12,7 +13,7 @@ export default class Usuario {
   ) {}
 
   static async create(nome: string, email: string, senha: string) {
-    const id = crypto.randomUUID();
+    const id = randomUUID();
     return new Usuario(
       id,
       new Nome(nome),

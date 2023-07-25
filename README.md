@@ -6,7 +6,7 @@
 - Jest
 
 ## Arquitetura
-- Hexagonal
+- Clean Architecture
 
 ## Comandos
 ```bash

@@ -1,6 +1,6 @@
-import UsuarioRepositoryMemory from 'src/@core/infra/database/memory/UsuarioRepositoryMemory';
-import AlterarUsuario from '../../src/@core/application/usecase/usuario/AlterarUsuario';
-import CriarUsuario from '../../src/@core/application/usecase/usuario/CriarUsuario';
+import UsuarioRepositoryMemory from '@database/memory/UsuarioRepositoryMemory';
+import AlterarUsuario from '@usecase/usuario/AlterarUsuario';
+import CriarUsuario from '@usecase/usuario/CriarUsuario';
 
 const newUser = {
   nome: 'Alan Miranda',
