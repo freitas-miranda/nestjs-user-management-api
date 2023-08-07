@@ -8,6 +8,7 @@ export default class Nome {
 
     const nomePreparado = nome.trim();
 
+    // Aceitar apenas nomes com pelo menos duas palavras
     if (nomePreparado.split(' ').length < 2) throw new Error('Nome inválido!');
     this.value = nomePreparado;
   }

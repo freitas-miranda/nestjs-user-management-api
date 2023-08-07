@@ -1,11 +1,10 @@
 import { pbkdf2Sync, randomBytes } from 'node:crypto';
 
 export default class Senha {
-  gerarSenha = 'abc';
-
   constructor(readonly value: string, readonly salt: string) {}
 
   static create(senhaAberta: string, salt?: string): Senha {
+    // Senha precisa ter pelo menos 8 caracteres
     if (senhaAberta.length < 8) throw new Error('Senha inválida!');
 
     const { hashedPassword, generatedSalt } = Senha.gerarSenha(
