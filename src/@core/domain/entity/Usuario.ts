@@ -12,13 +12,13 @@ export default class Usuario {
     public senha: Senha,
   ) {}
 
-  static async create(nome: string, email: string, senha: string) {
+  static create(nome: string, email: string, senha: string) {
     const id = randomUUID();
     return new Usuario(
       id,
       new Nome(nome),
       new Email(email),
-      await Senha.create(senha),
+      Senha.create(senha),
     );
   }
 
