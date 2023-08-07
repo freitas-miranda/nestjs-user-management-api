@@ -28,14 +28,14 @@
       "./node_modules/@types"
     ],
     "paths": {
-      "@usecase/*": ["./src/@core/application/usecase/*"],
-      "@repository/*": ["./src/@core/application/repository/*"],
-      "@application/*": ["./src/@core/application/*"],
-      "@entity/*": ["./src/@core/domain/entity/*"],
-      "@events/*": ["./src/@core/domain/events/*"],
-      "@domain/*": ["./src/@core/domain/*"],
-      "@database/*": ["./src/@core/infra/database/*"],
-      "@infra/*": ["./src/@core/infra/*"],
+      "@usecase/*": ["src/@core/application/usecase/*"],
+      "@repository/*": ["src/@core/application/repository/*"],
+      "@application/*": ["src/@core/application/*"],
+      "@entity/*": ["src/@core/domain/entity/*"],
+      "@events/*": ["src/@core/domain/events/*"],
+      "@domain/*": ["src/@core/domain/*"],
+      "@database/*": ["src/@core/infra/database/*"],
+      "@infra/*": ["src/@core/infra/*"],
       "@test/*": ["./test/*"],
       "@src/*": ["./src/*"],
       "src/*": ["./src/*"]

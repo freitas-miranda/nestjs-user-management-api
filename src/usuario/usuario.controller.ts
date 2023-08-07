@@ -9,13 +9,11 @@ import {
 } from '@nestjs/common';
 import AlterarUsuario, {
   AlterarUsuarioInput,
-} from 'src/@core/application/usecase/usuario/AlterarUsuario';
-import CriarUsuario, {
-  CriarUsuarioInput,
-} from 'src/@core/application/usecase/usuario/CriarUsuario';
-import DeletarUsuario from 'src/@core/application/usecase/usuario/DeletarUsuario';
-import ExibirUsuario from 'src/@core/application/usecase/usuario/ExibirUsuario';
-import ListarUsuario from 'src/@core/application/usecase/usuario/ListarUsuario';
+} from '@usecase/usuario/AlterarUsuario';
+import CriarUsuario, { CriarUsuarioInput } from '@usecase/usuario/CriarUsuario';
+import DeletarUsuario from '@usecase/usuario/DeletarUsuario';
+import ExibirUsuario from '@usecase/usuario/ExibirUsuario';
+import ListarUsuario from '@usecase/usuario/ListarUsuario';
 
 @Controller('usuario')
 export default class UsuarioController {

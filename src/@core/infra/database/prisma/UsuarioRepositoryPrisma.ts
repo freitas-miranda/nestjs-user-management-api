@@ -1,5 +1,5 @@
-import UsuarioRepository from '../../../application/repository/UsuarioRepository';
-import Usuario from 'src/@core/domain/entity/Usuario';
+import Usuario from '@entity/Usuario';
+import UsuarioRepository from '@repository/UsuarioRepository';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 export default class UsuarioRepositoryPrisma implements UsuarioRepository {

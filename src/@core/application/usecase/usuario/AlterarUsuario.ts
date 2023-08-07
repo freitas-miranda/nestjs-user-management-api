@@ -1,6 +1,6 @@
-import Nome from 'src/@core/domain/entity/Nome';
+import Nome from '@src/@core/domain/entity/Nome';
+import Email from '@src/@core/domain/entity/Email';
 import UsuarioRepository from '../../repository/UsuarioRepository';
-import Email from 'src/@core/domain/entity/Email';
 
 export default class AlterarUsuario {
   constructor(private repo: UsuarioRepository) {}

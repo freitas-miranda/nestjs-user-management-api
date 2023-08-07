@@ -1,5 +1,5 @@
-import Usuario from 'src/@core/domain/entity/Usuario';
-import UsuarioRepository from '../../repository/UsuarioRepository';
+import Usuario from '@entity/Usuario';
+import UsuarioRepository from '@repository/UsuarioRepository';
 
 export default class ListarUsuario {
   constructor(private repo: UsuarioRepository) {}

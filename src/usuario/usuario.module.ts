@@ -1,14 +1,14 @@
-import UsuarioRepositoryMemory from '../@core/infra/database/memory/UsuarioRepositoryMemory';
 import { Module } from '@nestjs/common';
 import UsuarioController from './usuario.controller';
-import AlterarUsuario from 'src/@core/application/usecase/usuario/AlterarUsuario';
-import UsuarioRepository from 'src/@core/application/repository/UsuarioRepository';
-import CriarUsuario from 'src/@core/application/usecase/usuario/CriarUsuario';
-import DeletarUsuario from 'src/@core/application/usecase/usuario/DeletarUsuario';
-import ExibirUsuario from 'src/@core/application/usecase/usuario/ExibirUsuario';
-import ListarUsuario from 'src/@core/application/usecase/usuario/ListarUsuario';
-import UsuarioRepositoryPrisma from 'src/@core/infra/database/prisma/UsuarioRepositoryPrisma';
 import { PrismaService } from 'src/prisma/prisma.service';
+import UsuarioRepositoryMemory from '@database/memory/UsuarioRepositoryMemory';
+import UsuarioRepositoryPrisma from '@database/prisma/UsuarioRepositoryPrisma';
+import AlterarUsuario from '@usecase/usuario/AlterarUsuario';
+import UsuarioRepository from '@repository/UsuarioRepository';
+import CriarUsuario from '@usecase/usuario/CriarUsuario';
+import DeletarUsuario from '@usecase/usuario/DeletarUsuario';
+import ExibirUsuario from '@usecase/usuario/ExibirUsuario';
+import ListarUsuario from '@usecase/usuario/ListarUsuario';
 
 @Module({
   controllers: [UsuarioController],
@@ -24,19 +24,6 @@ import { PrismaService } from 'src/prisma/prisma.service';
       },
       inject: [PrismaService],
     },
-    // UsuarioRepositoryPrisma,
-    // UsuarioRepositoryHttp,
-    //CreateUsuarioInCrmUsuarioener,
-    // PublishUsuarioCreatedUsuarioener,
-    // CreateUsuarioInCrmJob,
-    // {
-    //   provide: 'UsuarioIntegrationRepository',
-    //   useExisting: UsuarioRepositoryHttp,
-    // },
-    // {
-    //   provide: 'EventEmitter',
-    //   useExisting: EventEmitter2,
-    // },
     {
       provide: AlterarUsuario,
       useFactory: (repo: UsuarioRepository) => {

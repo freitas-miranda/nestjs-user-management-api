@@ -1,6 +1,5 @@
-import Email from 'src/@core/domain/entity/Email';
-import UsuarioRepository from '../../../application/repository/UsuarioRepository';
-import Usuario from 'src/@core/domain/entity/Usuario';
+import Usuario from '@entity/Usuario';
+import UsuarioRepository from '@repository/UsuarioRepository';
 
 export default class UsuarioRepositoryMemory implements UsuarioRepository {
   items = [];

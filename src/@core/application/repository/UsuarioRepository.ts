@@ -1,4 +1,4 @@
-import Usuario from '../../domain/entity/Usuario';
+import Usuario from '@entity/Usuario';
 
 export default interface UsuarioRepository {
   save(usuario: Usuario): Promise<{ id: string }>;

@@ -1,5 +1,5 @@
+import { createMockModule } from '@test/moker';
 import { Test, TestingModule } from '@nestjs/testing';
-import { createMockModule } from '@infra/common/tests/moker';
 import UsuarioRepositoryMemory from '@database/memory/UsuarioRepositoryMemory';
 import AlterarUsuario from '@usecase/usuario/AlterarUsuario';
 import CriarUsuario from '@usecase/usuario/CriarUsuario';
