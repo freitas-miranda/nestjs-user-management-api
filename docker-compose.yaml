@@ -3,16 +3,26 @@ version: '3'
 services:
   api:
     build: .
+    container_name: login-nest-api
     ports:
       - 3000:3000
     volumes:
       - .:/home/node/app
       - ~/.ssh:/home/node/.ssh
+    networks:
+      - login-nest-network      
 
-  mariadb:
+  db:
     image: mariadb:latest
+    container_name: login-nest-db   
     ports:
-      - 3306:3306    
+      - 3307:3306    
     environment:
       MYSQL_ROOT_PASSWORD: sql@dev
       TZ: America/Porto_Velho
+    networks:
+      - login-nest-network
+
+networks:
+    login-nest-network:
+      driver: bridge
